@@ -58,7 +58,7 @@ function getMsg(c) {
       where: { id: req.params.id },
     });
     if (!existModel) throw Error(getMsg('404'));
-    res.status(StatusCodes.ACCEPTED).json({ data: existModel, sucess: true ,msg : getMsg('put')});
+    res.status(StatusCodes.ACCEPTED).json({ data: req.body, sucess: true ,msg : getMsg('put')});
   };
 
   const Patch = async (req, res) => {
@@ -68,7 +68,7 @@ function getMsg(c) {
       where: { id: req.params.id },
     });
     if (!existModel) throw Error(getMsg('404'));
-    res.status(StatusCodes.ACCEPTED).json({ data: existModel, sucess: true ,msg : getMsg('put')});
+    res.status(StatusCodes.ACCEPTED).json({ data: req.body, sucess: true ,msg : getMsg('put')});
   };
 
  

@@ -10,7 +10,7 @@ const user = require("./models/user");
 const role = require("./models/role");
 
 const sequelize = require("./utils/database");
-const { createRoute , app} = createApp(sequelize);
+const {app, createRoute } = createApp(sequelize);
 
 createRoute("roles", role, {
   onDelete: (req) =>
