@@ -6,7 +6,6 @@ const corsOptions = {
   optionSuccessStatus: 200,
 };
 let models = {};
-const setModels = (modelsObj = {}) => (models = modelsObj);
 
 const createApp = (sequelize = null) => {
   if (!sequelize) throw Error("please pass sequelize in createApp function.");
@@ -38,6 +37,6 @@ const createApp = (sequelize = null) => {
     app.use(baseUrl, router);
   };
 
-  return { app, createRoute, setModels };
+  return { app, createRoute };
 };
 module.exports = { createApp };
