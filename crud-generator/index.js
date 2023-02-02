@@ -1,5 +1,8 @@
 const express = require("express");
 const cors = require("cors");
+
+const generateAuthToken = require('../utils/generate-auth-token')
+
 const corsOptions = {
   origin: "*",
   credentials: true, //access-control-allow-credentials:true
@@ -37,6 +40,6 @@ const createApp = (sequelize = null) => {
     app.use(baseUrl, router);
   };
 
-  return { app, createRoute };
+  return { app, createRoute,generateAuthToken };
 };
 module.exports = { createApp };
