@@ -4,7 +4,6 @@ const getMsg = require("../utils/get-msg");
 const crudController = (
   modelName,
   Model,
-  sequelize,
   {
     onDelete = () => {},
     onGetAll = () => {},
@@ -48,7 +47,7 @@ const responseMsg = getMsg(modelName);
       where: { id: req.params.id },
     });
     if (!existModel) throw Error(responseMsg('404'));
-    res.status(StatusCodes.ACCEPTED).json({ data: req.body, sucess: true ,msg : responseMsg('put')});
+    res.status(StatusCodes.ACCEPTED).json({ data: await GetSingle(req,res), sucess: true ,msg : responseMsg('put')});
   };
 
   const Patch = async (req, res) => {
@@ -58,10 +57,8 @@ const responseMsg = getMsg(modelName);
       where: { id: req.params.id },
     });
     if (!existModel) throw Error(responseMsg('404'));
-    res.status(StatusCodes.ACCEPTED).json({ data: req.body, sucess: true ,msg : responseMsg('put')});
+    res.status(StatusCodes.ACCEPTED).json({ data: await GetSingle(req,res), sucess: true ,msg : responseMsg('put')});
   };
-
- 
 
   const Delete = async (req, res) => {
     await onDelete(req,res);

@@ -34,8 +34,7 @@ const createApp = (sequelize = null) => {
     const { GetAll, GetSingle, Post, Patch, Put, Delete } =
       require("../crud-generator/crudController")(
         modelName,
-        model ,
-        sequelize,
+        model,
         crudFuncs
       );
     
@@ -51,7 +50,7 @@ const createApp = (sequelize = null) => {
     router.route("/")
     .get(onGetAll || defaultMiddleware, GetAll)
     .post(onPost || defaultMiddleware, Post);
-    
+
     router.route("/:id")
     .get(onGetSingle || defaultMiddleware, GetSingle)
     .patch(onPatch || defaultMiddleware, Patch)
