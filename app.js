@@ -11,6 +11,7 @@ const role = require("./models/role");
 
 const sequelize = require("./utils/database");
 const { StatusCodes } = require("http-status-codes");
+const getMsg = require("./utils/get-msg");
 const {app, createRoute } = createApp(sequelize);
 
 app.get('/',(__,res) => res.status(StatusCodes.ACCEPTED).json({success : true,msg : 'Crud Generator API'}))
@@ -32,6 +33,7 @@ createRoute("users",user,{},{onPost : (req,res,next) => {
   req.body.i = 999;
   console.log(req.body);
   next();
+  res.json({msg : getMsg('Balls')('get')})
 }})
 
 
