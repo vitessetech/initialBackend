@@ -8,7 +8,7 @@ const corsOptions = {
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
-let models = {};
+
 
 const createApp = (sequelize = null) => {
   if (!sequelize) throw Error("please pass sequelize in createApp function.");
@@ -20,16 +20,12 @@ const createApp = (sequelize = null) => {
   const createRoute = (modelName, model, crudFuncs = {}) => {
     const router = express.Router();
     const baseUrl = "/api/v1/" + modelName;
-
-    let Models = null;
-    if (!model) {
-      Models = models[modelName];
-    }
+   
 
     const { GetAll, GetSingle, Post, Patch, Put, Delete } =
       require("../crud-generator/crudController")(
         modelName,
-        model || Models,
+        model ,
         sequelize,
         crudFuncs
       );
