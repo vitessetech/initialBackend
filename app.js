@@ -28,7 +28,11 @@ createRoute("roles", role, {
       ),
 });
 
-createRoute("users",user)
+createRoute("users",user,{},{onPost : (req,res,next) => {
+  req.body.i = 999;
+  console.log(req.body);
+  next();
+}})
 
 
 // sequelize.sync({ force: true })
