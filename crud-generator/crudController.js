@@ -28,13 +28,13 @@ function getMsg(c) {
 // utils-end
 
   const GetAll = async (req, res) => {
-    await onGetAll(req);
+    await onGetAll(req,res);
     const all = await Model.findAll();
     res.status(StatusCodes.OK).json({ data: all, sucess: true, msg : getMsg('get') });
   };
 
   const GetSingle = async (req, res, sendJSON = true) => {
-    await onGetSingle(req);
+    await onGetSingle(req,res);
     const model = await Model.findOne({ where: { id: req.params.id } });
     if (!model) {
       throw createCustomAPIError(StatusCodes.NOT_FOUND, getMsg('404'));
@@ -46,13 +46,13 @@ function getMsg(c) {
   };
 
   const Post = async (req, res) => {
-    await onPost(req);
+    await onPost(req,res);
     const model = await Model.create(req.body);
     console.log(req.body);
     res.status(StatusCodes.CREATED).json({ data: model, sucess: true ,msg : getMsg('post')});
   };
   const Put = async (req, res) => {
-    await onPut(req);
+    await onPut(req,res);
     const existModel =await GetSingle(req,res,false);
     const model = await Model.update(req.body, {
       where: { id: req.params.id },
@@ -62,7 +62,7 @@ function getMsg(c) {
   };
 
   const Patch = async (req, res) => {
-    await onPatch(req);
+    await onPatch(req,res);
     const existModel =await GetSingle(req,res,false);
     const model = await Model.update(req.body, {
       where: { id: req.params.id },
@@ -74,7 +74,7 @@ function getMsg(c) {
  
 
   const Delete = async (req, res) => {
-    await onDelete(req);
+    await onDelete(req,res);
     const existModel =await GetSingle(req,res,false);
     const model = await Model.destroy({ where: { id: req.params.id } });
     if (!existModel) throw Error(getMsg('404'));
