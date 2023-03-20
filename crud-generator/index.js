@@ -58,6 +58,8 @@ const createApp = (sequelize = null) => {
     .delete(onDelete || defaultMiddleware, Delete);
 
     app.use(baseUrl, router);
+
+    return {baseUrl, modelName, router}
   };
 
   return { app, createRoute,generateAuthToken };

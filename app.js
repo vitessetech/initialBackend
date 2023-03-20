@@ -1,6 +1,5 @@
 require("express-async-errors");
 require("dotenv").config();
-const express = require("express");
 const NotFoundMiddleware = require('./middlewares/not-found')
 const errorHandlerMiddleware = require('./middlewares/error-handler')
 const { createApp } = require("./crud-generator");
