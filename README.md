@@ -19,3 +19,4 @@ This is Initial Setup for Backend Node Application, just clone it and use it ;)
 - No need to pass separate two props for pre-methods and middlewares.
 - base Url and cors configuration
 - pass customReq like onGetList
+- use bycrypt for password
