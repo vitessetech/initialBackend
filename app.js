@@ -30,7 +30,6 @@ createRoute("roles", role, {
 });
 
 createRoute("users",user,{
-  onPost : req => {req.body.image = req.body.file_name}
 },{
   onPost : fileUpload('image','users',["png", "jpg","jpeg"])
 //   (req,res,next) => {

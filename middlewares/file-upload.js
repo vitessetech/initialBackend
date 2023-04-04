@@ -14,6 +14,8 @@ const date = moment(new Date()).format('DD-MM-YY_hh-mm-ss')
       date +
       "." +
       file.originalname.split(".")[file.originalname.split(".").length - 1];
+
+      req.body[fieldName] = name
       req.body.file_name = name
       callback(
         null,
