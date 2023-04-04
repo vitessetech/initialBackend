@@ -30,6 +30,10 @@ const User = sequelize.define("user", {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  image: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
   pl_actual: {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
@@ -58,6 +62,7 @@ const User = sequelize.define("user", {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
   },
+
   // isAdmin: {
   //   type: Sequelize.BOOLEAN,
   //   defaultValue: false,
