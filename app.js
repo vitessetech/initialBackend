@@ -29,8 +29,10 @@ createRoute("roles", role, {
       ),
 });
 
-createRoute("users",user,{},{
-  onPost : fileUpload("image")
+createRoute("users",user,{
+  onPost : req => {req.body.image = req.body.file_name}
+},{
+  onPost : fileUpload('image','users',["png", "jpg","jpeg"])
 //   (req,res,next) => {
 //   req.body.i = 999;
 //   console.log(req.body);
@@ -40,7 +42,7 @@ createRoute("users",user,{},{
 })
 
 
-// sequelize.sync({ force: true })
+// sequelize.sync({ force: true , alter : true})
 
 
 

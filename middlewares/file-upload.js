@@ -7,13 +7,15 @@ var storage = multer.diskStorage({
       callback(null, "./assets/media/" + path);
     },
     filename: function (req, file, callback) {
+      let name = file.fieldname +
+      "-" +
+      date +
+      "." +
+      file.originalname.split(".")[file.originalname.split(".").length - 1];
+      req.body.file_name = name
       callback(
         null,
-        file.fieldname +
-          "-" +
-          date +
-          "." +
-          file.originalname.split(".")[file.originalname.split(".").length - 1]
+        name
       );
     },
   });
