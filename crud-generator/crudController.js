@@ -18,7 +18,7 @@ const responseMsg = getMsg(modelName);
 
   const GetAll = async (req, res) => {
     await onGetAll(req,res);
-    const all = await Model.findAll();
+    const all = await Model.findAll({where : req.query});
     res.status(StatusCodes.OK).json({ data: all, sucess: true, msg : responseMsg('get') });
   };
 
