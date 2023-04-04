@@ -1,12 +1,14 @@
 const multer = require("multer");
-const moment = require('moment')
+const moment = require('moment');
 const fileUpload = (fieldName,path,extensions = ["txt"]) => {
-const date = moment(new Date()).format('DD-MM-YY')
 var storage = multer.diskStorage({
     destination: function (req, file, callback) {
+
       callback(null, "./assets/media/" + path);
     },
     filename: function (req, file, callback) {
+const date = moment(new Date()).format('DD-MM-YY_hh-mm-ss')
+
       let name = file.fieldname +
       "-" +
       date +
