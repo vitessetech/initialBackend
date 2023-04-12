@@ -20,3 +20,4 @@ This is Initial Setup for Backend Node Application, just clone it and use it ;)
 - base Url and cors configuration
 - pass customReq like onGetList
 - use bycrypt for password
+- pagination util
